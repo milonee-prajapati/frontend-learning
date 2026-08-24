@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #666;
+  font-size: 17px;
+}
+
+.student-form {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.results {
+  margin-top: 30px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.results h2 {
+  text-align: center;
+}
+
+.score {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.score span {
+  display: block;
+  color: #666;
+}
+
+.score strong {
+  display: block;
+  font-size: 52px;
+  margin-top: 10px;
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.result-row div {
+  padding: 20px;
+  background: #f4f7fb;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.result-row span {
+  display: block;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.result-row strong {
+  font-size: 20px;
+}
+
+.recommendations {
+  margin-top: 25px;
+}
+
+.recommendations li {
+  margin-bottom: 10px;
+}
+
+.error {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+
+  .result-row {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+}

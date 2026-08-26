@@ -48,7 +48,7 @@ function App() {
     try {
 
       const response = await fetch(
-        "http://127.0.0.1:8000/predict",
+        "https://frontend-learning-gq78.onrender.com/predict",
         {
           method: "POST",
 
@@ -196,16 +196,11 @@ function App() {
               onChange={handleChange}
               required
             />
-
           </div>
-
-
           <div className="form-group">
-
             <label>
               Assignments Completed
             </label>
-
             <input
               type="number"
               name="assignments_completed"
@@ -215,124 +210,81 @@ function App() {
               onChange={handleChange}
               required
             />
-
           </div>
-
-
           <button
             type="submit"
             disabled={loading}
           >
-
             {loading
               ? "Analyzing..."
               : "Predict Performance"
             }
-
           </button>
-
         </form>
-
 
         {/* =====================================
             ERROR
         ====================================== */}
 
         {error && (
-
           <div className="error">
             {error}
           </div>
-
         )}
-
 
         {/* =====================================
             RESULTS
         ====================================== */}
 
         {result && (
-
           <div className="results">
-
             <h2>
               📊 Student Performance Report
             </h2>
-
-
             <div className="score">
-
               <span>
                 Predicted Final Score
               </span>
-
               <strong>
                 {result.predicted_score}
               </strong>
-
             </div>
-
-
             <div className="result-row">
-
               <div>
-
                 <span>
                   Performance
                 </span>
-
                 <strong>
                   {result.performance}
                 </strong>
-
               </div>
-
-
               <div>
-
                 <span>
                   Risk Level
                 </span>
-
                 <strong>
                   {result.risk}
                 </strong>
-
               </div>
-
             </div>
-
-
             <div className="recommendations">
-
               <h3>
                 🤖 AI Recommendations
               </h3>
-
               <ul>
-
                 {result.recommendations.map(
                   (recommendation, index) => (
-
                     <li key={index}>
                       {recommendation}
                     </li>
-
                   )
                 )}
-
               </ul>
-
             </div>
-
           </div>
-
         )}
-
       </div>
-
     </div>
-
   );
 }
 

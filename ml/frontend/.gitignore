@@ -4,8 +4,8 @@ ml/__pycache__/
 *.pyc
 
 # Node
-frontend/node_modules/
-frontend/dist/
+node_modules/
+dist/
 
 # Environment variables
 .env

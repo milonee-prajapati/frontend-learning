@@ -4,7 +4,6 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 
-
 # ==========================================
 # CREATE FASTAPI APP
 # ==========================================
@@ -15,26 +14,23 @@ app = FastAPI(
     version="1.0"
 )
 
-
 # ==========================================
 # ALLOW REACT TO CONNECT LATER
 # ==========================================
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://frontend-learning-silk.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ==========================================
 # LOAD ML MODEL
 # ==========================================
 
 model = joblib.load("model.pkl")
-
 
 # ==========================================
 # INPUT DATA STRUCTURE
@@ -60,7 +56,6 @@ def home():
         "message": "AI Student Performance Predictor API is running!"
     }
 
-
 # ==========================================
 # HEALTH CHECK
 # ==========================================
@@ -72,7 +67,6 @@ def health():
         "status": "healthy",
         "model_loaded": True
     }
-
 
 # ==========================================
 # PREDICTION ENDPOINT
@@ -92,7 +86,6 @@ def predict_student(data: StudentData):
         }
     ])
 
-
     # ======================================
     # ML PREDICTION
     # ======================================
@@ -103,7 +96,6 @@ def predict_student(data: StudentData):
 
     # Keep score between 0 and 100
     score = max(0, min(100, score))
-
 
     # ======================================
     # PERFORMANCE LEVEL
@@ -118,13 +110,11 @@ def predict_student(data: StudentData):
     else:
         performance = "At Risk"
 
-
     # ======================================
     # RISK ANALYSIS
     # ======================================
 
     risk_points = 0
-
 
     if data.attendance < 75:
         risk_points += 1
@@ -141,13 +131,11 @@ def predict_student(data: StudentData):
     if data.assignments_completed < 6:
         risk_points += 1
 
-
     if score < 50:
         risk_points += 2
 
     elif score < 65:
         risk_points += 1
-
 
     # ======================================
     # RISK LEVEL
@@ -162,16 +150,13 @@ def predict_student(data: StudentData):
         risk = "MEDIUM RISK"
 
     else:
-
         risk = "HIGH RISK"
-
 
     # ======================================
     # RECOMMENDATIONS
     # ======================================
 
     recommendations = []
-
 
     if data.attendance < 75:
         recommendations.append(
@@ -205,19 +190,13 @@ def predict_student(data: StudentData):
             "Keep up your current study routine!"
         )
 
-
     # ======================================
     # RETURN JSON RESPONSE
     # ======================================
 
     return {
-
         "predicted_score": round(score, 2),
-
         "performance": performance,
-
         "risk": risk,
-
         "recommendations": recommendations
-
     }
